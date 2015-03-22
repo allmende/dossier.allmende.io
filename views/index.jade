@@ -111,7 +111,7 @@ block script
   script.
     // prepare to handle url
     var paths = location.pathname.split('/') || [];
-    var ethercalc_name     = paths[1] || "transforlab";
+    var ethercalc_name     = paths[1] || "hacks";
     var current_iframe_url = paths[2] ? unescape(unescape(paths[2])) : null;
     var history_state={};
     // prepare to handle backend data (from ethercalc or google spreadsheet)
@@ -524,9 +524,9 @@ block script
             // set initial page title
             if(this_row_url == iframe_src){
               if(iframe_src == "edit"){
-                $("title").text("editing "+current_foldr_name+" | hack.transforlab.net");
+                $("title").text("editing "+current_foldr_name+" | dossier.allmende.io");
               }else{
-                $("title").text(this_row_title+" | "+current_foldr_name+" | hack.transforlab.net");
+                $("title").text(this_row_title+" | "+current_foldr_name+" | dossier.allmende.io");
               }
             }
           }
@@ -757,10 +757,10 @@ block script
     // create new hackpad and add to foldr
     $("#topbar .form .submit.add.create").on("click tap", function(){
       var new_hackpad_title = $("#topbar .form .new.pad.title").val();
-      //var new_hackpad_id = encodeURIComponent(new_hackpad_title.slice(0,8));
-      var new_hackpad_id = Math.random().toString(36);
+      var new_hackpad_id = encodeURIComponent(new_hackpad_title);
+      //var new_hackpad_id = Math.random().toString(36);
       var pad_iri = "https://text.allmende.io/"
-      var new_hackpad_url = pad_iri+new_hackpad_id;
+      var new_hackpad_url = pad_iri + 'p/' new_hackpad_id;
       var new_menu_item = '<a href="'+new_hackpad_url+'" target="iframe" class="link item"><i class="icon text file outline"></i>'+new_hackpad_title+'</a>';
       // add new hackpad info to foldr
       if(new_hackpad_title.length > 0){
