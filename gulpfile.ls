@@ -29,6 +29,10 @@ gulp.task 'js', ->
   gulp.src 'js/*.js'
     .pipe gulp.dest "#{build_path}/js"
 
+gulp.task 'gh-pages', ->
+  gulp.src 'CNAME'
+    .pipe gulp.dest "#{build_path}"
+
 gulp.task 'server', ->
   app.use connect-livereload!
   app.use express.static path.resolve "#{build_path}"
@@ -42,6 +46,6 @@ gulp.task 'watch', ->
   gulp.watch './views/backup/*.html', <[html]> .on \change, gulp-livereload.changed
   gulp.watch 'js/*js', <[js]> .on \change, gulp-livereload.changed
 
-gulp.task 'build', <[jade sass html js assets]>
+gulp.task 'build', <[jade sass html js assets gh-pages]>
 gulp.task 'dev', <[build server watch]>
 gulp.task 'default', <[build]>
