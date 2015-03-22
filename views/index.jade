@@ -760,7 +760,7 @@ block script
       var new_hackpad_id = encodeURIComponent(new_hackpad_title);
       //var new_hackpad_id = Math.random().toString(36);
       var pad_iri = "https://text.allmende.io/";
-      var new_hackpad_url = pad_iri + 'p/' new_hackpad_id;
+      var new_hackpad_url = pad_iri + 'p/' + new_hackpad_id;
       var new_menu_item = '<a href="'+new_hackpad_url+'" target="iframe" class="link item"><i class="icon text file outline"></i>'+new_hackpad_title+'</a>';
       // add new hackpad info to foldr
       if(new_hackpad_title.length > 0){
